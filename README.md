@@ -38,10 +38,10 @@ We are using [Poetry](https://python-poetry.org/) instead of `pip` to manage dep
 
 ## Usage
 
-The API endpoint is exposed on <http://127.0.0.1:8080/api/>. You can use browsable API interface by open that url on browser or you can use [Postman](./postman_collection.json). Before making request make sure you've obtain the token:
+The API endpoint is exposed on <http://127.0.0.1:8080/v1/>. You can use browsable API interface by open that url on browser or you can use [Postman](./postman_collection.json). Before making request make sure you've obtain the token:
 
 ```bash
-curl --location --request POST 'http://127.0.0.1:8000/api/token/' \
+curl --location --request POST 'http://127.0.0.1:8000/v1/token/' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "username": "{{username}}",
@@ -52,6 +52,6 @@ curl --location --request POST 'http://127.0.0.1:8000/api/token/' \
 Then include `access` token in every request to get authenticated.
 
 ```bash
-curl --location --request GET 'http://127.0.0.1:8000/api/users/' \
+curl --location --request GET 'http://127.0.0.1:8000/v1/users/' \
 --header 'Authorization: Bearer {{access_token}}'
 ```
