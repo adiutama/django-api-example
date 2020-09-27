@@ -1,13 +1,17 @@
 from django.contrib.auth.models import User, Group
-from rest_framework.serializers import HyperlinkedModelSerializer
+from dynamic_rest.serializers import DynamicModelSerializer
+from dynamic_rest.fields import DynamicRelationField
 
-class UserSerializer(HyperlinkedModelSerializer):
+class UserSerializer(DynamicModelSerializer):
+  groups = DynamicRelationField('GroupSerializer', many=True, deferred=True)
+
   class Meta:
     model = User
-    fields = ['url', 'username', 'email', 'groups']
+    deferred_fields = ['user_permissions']
+    exclude = ['password', 'last_login', 'is_superuser', 'is_staff']
 
-
-class GroupSerializer(HyperlinkedModelSerializer):
+class GroupSerializer(DynamicModelSerializer):
   class Meta:
     model = Group
-    fields = ['url', 'name']
+    deferred_fields = ['permissions']
+    exclude = []
