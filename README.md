@@ -2,12 +2,12 @@
 
 ## Getting Started
 
-We are using [Poetry](https://python-poetry.org/) instead of `pip` to manage dependencies. Make sure it has installed on your system before continue.
+We are using [Pipenv](https://pypi.org/project/pipenv/) instead of `pip` to manage dependencies. Make sure it has installed on your system before continue.
 
 1. Install dependencies
 
   ```bash
-  poetry install
+  pipenv install
   ```
 
 2. Copy *.env* file
@@ -21,19 +21,19 @@ We are using [Poetry](https://python-poetry.org/) instead of `pip` to manage dep
 3. Run migration
 
   ```bash
-  python manage.py migrate
+  pipenv run python manage.py migrate
   ```
 
 4. Create super user
 
   ```bash
-  python manage.py createsuperuser --username admin --email admin@example.com
+  pipenv run python manage.py createsuperuser --username admin --email admin@example.com
   ```
 
 5. Run server
 
   ```bash
-  python manage.py runserver
+  pipenv run python manage.py runserver
   ```
 
 ## Usage
