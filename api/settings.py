@@ -10,13 +10,15 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
-import environ
 from pathlib import Path
+from datetime import timedelta
+from environ import Env
 
-env = environ.Env()
+# Initiate env function
+env = Env()
 
 # Read .env file
-environ.Env.read_env()
+Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -139,4 +141,12 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',
         'dynamic_rest.renderers.DynamicBrowsableAPIRenderer',
     ],
+}
+
+# SimpleJWT settings
+# https://django-rest-framework-simplejwt.readthedocs.io/en/latest/settings.html#rotate-refresh-tokens
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=2),
+    'ROTATE_REFRESH_TOKENS': True,
 }
